@@ -248,6 +248,12 @@ public class TacticalBotAI : MonoBehaviour
         if (currentHealth <= 0f)
         {
             isDead = true;
+
+            if (CSKillCard.Instance != null)
+            {
+                CSKillCard.Instance.TriggerKill();
+            }
+
             agent.enabled = false; // Release NavMesh lock so it falls cleanly
             foreach (Collider col in GetComponentsInChildren<Collider>())
             {
